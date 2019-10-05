@@ -15,10 +15,10 @@ Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
 - Szerkezeti minta: MVC
 - Adatbázis: H2
 - Technológiák:
- - Java Spring Boot
- - Angular
- - Ajax
+  - Java Spring Boot
+  - Angular
+  - Ajax
 - Szoftverarchitektúra:
- - REST API
+  - REST API
 - Fejlesztő környezet: 
- - NetBeans 11
+  - NetBeans 11
