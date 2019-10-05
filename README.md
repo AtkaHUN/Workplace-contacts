@@ -11,3 +11,14 @@ Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
 - Új szektor felvitele/szerkesztése/törlése.
 - Új admin felvétele/törlése.
 ## Nemfunkcionális követelmények
+- felhasználhatóság: könnyű használat, letisztult kinézet
+- Szerkezeti minta: MVC
+- Adatbázis: H2
+- Technológiák:
+ - Java Spring Boot
+ - Angular
+ - Ajax
+- Szoftverarchitektúra:
+ - REST API
+- Fejlesztő környezet: 
+ - NetBeans 11
