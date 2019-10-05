@@ -1,1 +1,4 @@
-"# Workplace-contacts" 
+# Elérhetőségi lista
+## Feladatleírás
+## Funkcionális követelmények
+## Nemfunkcionális követelmények
