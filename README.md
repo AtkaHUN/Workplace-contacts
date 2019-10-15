@@ -12,13 +12,7 @@ Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
 - Új admin felvétele/törlése.
 ## Nemfunkcionális követelmények
 - felhasználhatóság: könnyű használat, letisztult kinézet
-- Szerkezeti minta: MVC
-- Adatbázis: H2
-- Technológiák:
-  - Java Spring Boot
-  - Angular
-  - Ajax
-- Szoftverarchitektúra:
-  - REST API
-- Fejlesztő környezet: 
-  - NetBeans 11
+## Fogalomjegyzék
+- Elérhetőségek: egy embernek azon adatai amik segítségével nem személyes módon is kapcsolatot tudunk velük létesíteni
+- Webes alkalmazás: egy olyan program, ami egy weblapra kerülő adatok elküldéséért és a beérkező adatok rendszerezéséért felel
+- Admin: az adatbázist adminisztráló egyén
