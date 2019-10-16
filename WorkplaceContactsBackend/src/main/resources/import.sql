@@ -1,4 +1,1 @@
-/**
- * Author:  emsgem
- * Created: 2019.10.15.
- */
+insert into People (id, name, telephone_number) values (1, 'Horváth Béla', '06203333333');
