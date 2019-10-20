@@ -5,36 +5,26 @@
  */
 package hu.elte.WorkplaceContactsBackend.entities;
 
-import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
 
+/**
+ *
+ * @author Attila
+ */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class People implements Serializable {
-
+public class Admins {
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column
-    @NotNull
-    private String name;
-    
-    @Column(name = "telephone_number")
-    private String telephoneNumber;
+    String username;
     
     @Column
-    private String email;
+    String password;
 }
