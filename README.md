@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Elérhetőségi lista
 ## Feladatleírás
 Feladat egy nagyobb cég alkalmazottainak az elérhetőségi adatainak a kezelésére szolgáló webes alkalmazás készítése. Az alkalmazás követelményei:
@@ -19,3 +20,8 @@ Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
 ## Szerepkörök
 - Adminok: olyan felhasználók, akik fel tudnak venni új embereket, beosztásokat és részlegek, emellett szerkeszthetik is őket
 - Felhasználók: mindenki más aki az oldalra téved, ők lekérhetit az adatbázisban lévő adatokat, de nem szerkeszthetik
+
+
+
+
+>>>>>>> Stashed changes

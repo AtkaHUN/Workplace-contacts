@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/depratment")
+@RequestMapping("/assigment")
 public class AssignmentController {
 
     @Autowired
