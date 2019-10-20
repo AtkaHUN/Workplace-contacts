@@ -5,8 +5,8 @@
  */
 package hu.elte.WorkplaceContactsBackend.controllers;
 
-import hu.elte.WorkplaceContactsBackend.entities.People;
-import hu.elte.WorkplaceContactsBackend.repositories.PeopleRepository;
+import hu.elte.WorkplaceContactsBackend.entities.Assignment;
+import hu.elte.WorkplaceContactsBackend.repositories.AssignmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/people")
-public class PeopleController {
+@RequestMapping("/depratment")
+public class AssignmentController {
 
     @Autowired
-    private PeopleRepository peopleRepository;
-    
+    private AssignmentRepository assignmentRepository;
+
     @GetMapping("")
-    public ResponseEntity<Iterable<People>> getAll() {
-        return ResponseEntity.ok(peopleRepository.findAll());
+    public ResponseEntity<Iterable<Assignment>> getAll() {
+        return ResponseEntity.ok(assignmentRepository.findAll());
     }
 }
