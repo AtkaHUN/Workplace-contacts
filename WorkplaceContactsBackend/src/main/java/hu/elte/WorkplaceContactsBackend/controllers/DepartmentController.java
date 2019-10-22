@@ -10,6 +10,7 @@ import hu.elte.WorkplaceContactsBackend.repositories.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,10 @@ public class DepartmentController {
     @GetMapping("")
     public ResponseEntity<Iterable<Department>> getAll() {
         return ResponseEntity.ok(departmentRepository.findAll());
+    }
+    
+    @GetMapping(path = "/findByName", consumes = "application/json")
+    public ResponseEntity<Iterable<Department>> getByNameContaining(@RequestBody Department department) { 
+        return ResponseEntity.ok(departmentRepository.findByName(department.getName()));
     }
 }

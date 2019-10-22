@@ -6,7 +6,10 @@
 package hu.elte.WorkplaceContactsBackend.repositories;
 
 import hu.elte.WorkplaceContactsBackend.entities.Person;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +18,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Integer> {
-
+    @Query(value = "SELECT p FROM Person p WHERE p.name LIKE CONCAT('%',:name,'%')")
+    List<Person> findByNameContaining(@Param("name") String name);
 }
