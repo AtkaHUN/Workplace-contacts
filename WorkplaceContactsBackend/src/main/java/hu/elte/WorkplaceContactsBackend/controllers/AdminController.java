@@ -5,24 +5,27 @@
  */
 package hu.elte.WorkplaceContactsBackend.controllers;
 
-import hu.elte.WorkplaceContactsBackend.entities.Assignment;
-import hu.elte.WorkplaceContactsBackend.repositories.AssignmentRepository;
+import hu.elte.WorkplaceContactsBackend.entities.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import hu.elte.WorkplaceContactsBackend.repositories.AdminRepository;
 
+/**
+ *
+ * @author Attila
+ */
 
 @RestController
-@RequestMapping("/assigment")
-public class AssignmentController {
-
+@RequestMapping("/admins")
+public class AdminController {
     @Autowired
-    private AssignmentRepository assignmentRepository;
-
+    private AdminRepository adminsRepository;
+    
     @GetMapping("")
-    public ResponseEntity<Iterable<Assignment>> getAll() {
-        return ResponseEntity.ok(assignmentRepository.findAll());
+    public ResponseEntity<Iterable<Admin>> getAll() {
+        return ResponseEntity.ok(adminsRepository.findAll());
     }
 }

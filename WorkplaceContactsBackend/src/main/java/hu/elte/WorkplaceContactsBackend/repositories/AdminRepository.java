@@ -5,7 +5,7 @@
  */
 package hu.elte.WorkplaceContactsBackend.repositories;
 
-import hu.elte.WorkplaceContactsBackend.entities.Admins;
+import hu.elte.WorkplaceContactsBackend.entities.Admin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface AdminsRepository extends CrudRepository<Admins, Integer> {
+public interface AdminRepository extends CrudRepository<Admin, Integer> {
 
 }

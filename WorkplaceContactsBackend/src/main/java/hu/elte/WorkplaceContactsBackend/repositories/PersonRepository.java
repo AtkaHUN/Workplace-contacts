@@ -5,15 +5,15 @@
  */
 package hu.elte.WorkplaceContactsBackend.repositories;
 
-import hu.elte.WorkplaceContactsBackend.entities.Assignment;
+import hu.elte.WorkplaceContactsBackend.entities.Person;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Alex
+ * @author emsgem
  */
 @Repository
-public interface AssignmentRepository extends CrudRepository<Assignment, Integer> {
+public interface PersonRepository extends CrudRepository<Person, Integer> {
 
 }
