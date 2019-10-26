@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.WorkplaceContactsBackend.repositories.PersonRepository;
+import java.util.Optional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -33,5 +37,27 @@ public class PersonController {
     public ResponseEntity<Person> post(@RequestBody Person person) {
         Person newPerson = peopleRepository.save(person);
         return ResponseEntity.ok(newPerson);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Person> put(@RequestBody Person person, @PathVariable Integer id) {
+        Optional<Person> oPerson = peopleRepository.findById(id);
+        if (oPerson.isPresent()) {
+            person.setId(id);
+            return ResponseEntity.ok(peopleRepository.save(person));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        Optional<Person> oMessage = peopleRepository.findById(id);
+        if (oMessage.isPresent()) {
+            peopleRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
