@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.WorkplaceContactsBackend.repositories.PersonRepository;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/people")
+@RequestMapping("/person")
 public class PersonController {
 
     @Autowired
@@ -25,5 +26,12 @@ public class PersonController {
     @GetMapping(path = "/findByName", consumes = "application/json")
     public ResponseEntity<Iterable<Person>> getByNameContaining(@RequestBody Person person) { 
         return ResponseEntity.ok(peopleRepository.findByNameContaining(person.getName()));
+    }
+    
+    //Ide kérek ellenőrzéseket
+    @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Person> post(@RequestBody Person person) {
+        Person newPerson = peopleRepository.save(person);
+        return ResponseEntity.ok(newPerson);
     }
 }
