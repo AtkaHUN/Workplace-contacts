@@ -2,10 +2,10 @@
 ## Feladatleírás
 Feladat egy nagyobb cég alkalmazottainak az elérhetőségi adatainak a kezelésére szolgáló webes alkalmazás készítése. Az alkalmazás követelményei:
 ## Funkcionális követelmények
-Mindenki álltal elérhető funkciók:
+Mindenki által elérhető funkciók:
 - Alkalmazottak keresése különböző értékek szerint.
 
-Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
+Csak "admin"-ok által elérhető funkciók (bejelentkezés után):
 - Alkalmazott felvitele/szerkesztése/törlése.
 - Elérhetőségek felvitele/szerkesztése/törlése.
 - Új szektor felvitele/szerkesztése/törlése.
@@ -18,4 +18,4 @@ Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
 - Admin: az adatbázist adminisztráló egyén
 ## Szerepkörök
 - Adminok: olyan felhasználók, akik fel tudnak venni új embereket, beosztásokat és részlegek, emellett szerkeszthetik is őket
-- Felhasználók: mindenki más aki az oldalra téved, ők lekérhetit az adatbázisban lévő adatokat, de nem szerkeszthetik
+- Felhasználók: mindenki más aki az oldalra téved, ők lekérhetik az adatbázisban lévő adatokat, de nem szerkeszthetik
