@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -32,7 +33,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       http
           .cors()
               .and()
-          .csrf().disable();
+          .csrf().disable()
+          .authorizeRequests()
+              .antMatchers("/h2/**", "/users/register").permitAll()   // important!
+              .anyRequest().authenticated()
+              .and()
+          .httpBasic()
+              .authenticationEntryPoint(getBasicAuthEntryPoint())
+              .and()
+          .headers()      // important!
+              .frameOptions().disable()
+              .and()
+          .sessionManagement()
+              .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }    
     @Autowired
     protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,15 +53,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .userDetailsService(userDetailsService)
           .passwordEncoder(passwordEncoder());
     }
-    @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-      auth
-          .inMemoryAuthentication()
-          .withUser("user").password("$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..").roles("USER");
-    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint(){
+        return new CustomBasicAuthenticationEntryPoint();
     }
 }

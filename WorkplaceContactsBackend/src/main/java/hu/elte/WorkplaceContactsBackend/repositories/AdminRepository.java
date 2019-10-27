@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdminRepository extends CrudRepository<Admin, Integer> {
-
+    Admin findByUsername(String username);
 }
