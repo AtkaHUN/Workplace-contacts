@@ -1,3 +1,4 @@
+# Projectötlet
 ## Funkcionális követelmények
 Mindenki álltal elérhető funkciók:
 - Alkalmazottak keresése különböző értékek szerint.
@@ -17,4 +18,4 @@ Csak "admin"-ok álltal elérhető funkciók (bejelentkezés után):
 - Adminok: olyan felhasználók, akik fel tudnak venni új embereket, beosztásokat és részlegek, emellett szerkeszthetik is őket
 - Felhasználók: mindenki más aki az oldalra téved, ők lekérhetit az adatbázisban lévő adatokat, de nem szerkeszthetik
 
-[Vissza az főoldalra](README.md)
+[Vissza az főleírásra](../README.md)
