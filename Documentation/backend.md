@@ -19,7 +19,11 @@ A programban 6 külön alkönyvtár található, amik a következőek:
 - **Error**: Speciális errorüzeneteket osztályát tároló mappa.
 ## Végpontok
 ###### Person végpontjai
-- a
+- `GET /person` A person entity-k kilistázása
+- `GET /person/findByName` A person entity név szerinti listázása
+- `POST /person/new` Új person felvétele
+- `PUT /person/:id` A person entity id szerinti módosítása
+- `DELETE /person/:id` A person entity id szerinti törlése
 ###### Department végpontjai
 - a
 ###### Contact végpontjai
