@@ -6,9 +6,11 @@
 package hu.elte.WorkplaceContactsBackend.controllers;
 
 import hu.elte.WorkplaceContactsBackend.entities.Department;
+import hu.elte.WorkplaceContactsBackend.lib.DepartmentValidator;
 import hu.elte.WorkplaceContactsBackend.repositories.DepartmentRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,9 @@ public class DepartmentController {
     //Ide kérek ellenőrzéseket
     @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Department> post(@RequestBody Department department) {
+        if(!DepartmentValidator.validate(department)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
         Department newDepartment = departmentRepository.save(department);
         return ResponseEntity.ok(newDepartment);
     }
