@@ -5,15 +5,16 @@
  */
 package hu.elte.WorkplaceContactsBackend.repositories;
 
-import hu.elte.WorkplaceContactsBackend.entities.People;
+import hu.elte.WorkplaceContactsBackend.entities.Admin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author emsgem
+ * @author Attila
  */
-@Repository
-public interface PeopleRepository extends CrudRepository<People, Integer> {
 
+@Repository
+public interface AdminRepository extends CrudRepository<Admin, Integer> {
+    Admin findByUsername(String username);
 }
