@@ -1,9 +1,11 @@
 package hu.elte.WorkplaceContactsBackend.controllers;
 
+import hu.elte.WorkplaceContactsBackend.DTO.ContactDTO;
 import hu.elte.WorkplaceContactsBackend.entities.Contact;
 import hu.elte.WorkplaceContactsBackend.entities.Person;
 import hu.elte.WorkplaceContactsBackend.error.ErrorHandler;
 import hu.elte.WorkplaceContactsBackend.repositories.ContactRepository;
+import hu.elte.WorkplaceContactsBackend.repositories.PersonRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +25,9 @@ public class ContactController {
 
     @Autowired
     private ContactRepository contactRepository;
+    
+    @Autowired
+    private PersonRepository peopleRepository;
 
     @GetMapping("")
     public ResponseEntity<Iterable<Contact>> getAll() {
@@ -40,12 +45,15 @@ public class ContactController {
     }
 
     @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> post(@RequestBody Contact contact) {
-        if (contact.getContactType() == null) {
-            return ResponseEntity.ok(new ErrorHandler("Enum null", "The enum is null"));
+    public ResponseEntity<Object> post(@RequestBody ContactDTO contact) {
+        Optional<Person> oPerson = peopleRepository.findById(contact.getId());
+        if(oPerson.isPresent()) {
+            Person person = oPerson.get();
+            Contact newContact = new Contact(person, contact.getContactType(), contact.getContact());
+            person.getContacts().add(newContact);
+            peopleRepository.save(person);
         }
-        Contact newContact = contactRepository.save(contact);
-        return ResponseEntity.ok(newContact);
+        return ResponseEntity.ok(contact);
     }
 
     @DeleteMapping("/{contact}")
