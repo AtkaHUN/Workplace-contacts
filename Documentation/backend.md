@@ -36,6 +36,11 @@ A programban 6 külön alkönyvtár található, amik a következőek:
 		- Bemenet: json-ben a person adatai
 		- Kimenet: A felvett person JSON-ben
 		- Hozzáférési szint: admin
+	- Link: `/person/{id}/{departmentId}`
+		- Funkciója: Az id-ben lévő persont felveszi a departmentIdben lévő Departmentbe
+		- Bemenet: a linkben lévő id és departmentId
+		- Kimenet: A person JSON-ben
+		- Hozzáférési szint: admin
 - PUT
 	- Link: `/person/:id`
 		- Funkciója: id alapján azonosít majd módosítja a person-található
@@ -67,8 +72,13 @@ A programban 6 külön alkönyvtár található, amik a következőek:
 		- Bemenet: json a deparment adatai (ott dolgozó emberek)
 		- Kimenet: A létrejött department
 		- Hozzáférési szint: admin
+	- Link: `/person/{id}/{personId}`
+		- Funkciója: Az id-ben lévő departmentet felveszi a personIdben lévő Personhőz
+		- Bemenet: a linkben lévő id és personId
+		- Kimenet: A department JSON-ben
+		- Hozzáférési szint: admin
 - PUT
-	- Link: `department/new` 
+	- Link: `department/{id}` 
 		- Funkciója: Megkeresi a linkben megadott department id alapján majd módosítja a json-ben kapott értékekre.
 		- Bemenet: A linkben található id érték és a department értékei json-ben
 		- Kimenet: A módosított deparment
