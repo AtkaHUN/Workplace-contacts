@@ -1,7 +1,9 @@
 package hu.elte.WorkplaceContactsBackend.controllers;
 
+import hu.elte.WorkplaceContactsBackend.entities.Department;
 import hu.elte.WorkplaceContactsBackend.entities.Person;
 import hu.elte.WorkplaceContactsBackend.lib.PersonValidator;
+import hu.elte.WorkplaceContactsBackend.repositories.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,9 @@ public class PersonController {
     @Autowired
     private PersonRepository peopleRepository;
     
+    @Autowired
+    private DepartmentRepository departmentRepository;
+    
     @GetMapping("")
     public ResponseEntity<Iterable<Person>> getAll() {
         return ResponseEntity.ok(peopleRepository.findAll());
@@ -34,7 +39,6 @@ public class PersonController {
         return ResponseEntity.ok(peopleRepository.findByNameContaining(person.getName()));
     }
     
-    //Ide kérek ellenőrzéseket
     @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Person> post(@RequestBody Person person) {
         if(!PersonValidator.validate(person)){
@@ -62,6 +66,28 @@ public class PersonController {
             peopleRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PostMapping("/{id}/{departmentId}")
+    public ResponseEntity addDepartment(@PathVariable Integer id, @PathVariable Integer departmentId) {
+        Optional<Person> oPerson = peopleRepository.findById(id);
+        if(oPerson.isPresent()) {
+            Optional<Department> oDepartment = departmentRepository.findById(departmentId);
+            if(oDepartment.isPresent()) {
+                Person person = oPerson.get();
+                Department department = oDepartment.get();
+                person.getDepartments().add(department);
+                department.getPeople().add(person);
+                peopleRepository.save(person);
+                return ResponseEntity.ok(person);
+            }
+            else {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        else {
             return ResponseEntity.notFound().build();
         }
     }

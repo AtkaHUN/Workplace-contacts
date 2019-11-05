@@ -6,8 +6,10 @@
 package hu.elte.WorkplaceContactsBackend.controllers;
 
 import hu.elte.WorkplaceContactsBackend.entities.Department;
+import hu.elte.WorkplaceContactsBackend.entities.Person;
 import hu.elte.WorkplaceContactsBackend.lib.DepartmentValidator;
 import hu.elte.WorkplaceContactsBackend.repositories.DepartmentRepository;
+import hu.elte.WorkplaceContactsBackend.repositories.PersonRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,8 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+    
+    @Autowired PersonRepository peopleRepository;
 
     @GetMapping("")
     public ResponseEntity<Iterable<Department>> getAll() {
@@ -66,6 +70,28 @@ public class DepartmentController {
             departmentRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PostMapping("/{id}/{personId}")
+    public ResponseEntity addPerson(@PathVariable Integer id, @PathVariable Integer personId) {
+        Optional<Person> oPerson = peopleRepository.findById(personId);
+        if(oPerson.isPresent()) {
+            Optional<Department> oDepartment = departmentRepository.findById(id);
+            if(oDepartment.isPresent()) {
+                Person person = oPerson.get();
+                Department department = oDepartment.get();
+                person.getDepartments().add(department);
+                department.getPeople().add(person);
+                departmentRepository.save(department);
+                return ResponseEntity.ok(department);
+            }
+            else {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        else {
             return ResponseEntity.notFound().build();
         }
     }
