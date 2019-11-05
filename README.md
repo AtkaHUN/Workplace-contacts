@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Elérhetőségi lista
 ## Feladatleírás
 Feladat egy nagyobb cég alkalmazottainak az elérhetőségi adatainak a kezelésére szolgáló webes alkalmazás készítése. Az alkalmazás követelményei:
@@ -6,8 +5,3 @@ Feladat egy nagyobb cég alkalmazottainak az elérhetőségi adatainak a kezelé
 ## Beadandórészek dokumentációi 
 - [Projektötlet](Documentation/projectotlet.md)
 - [Backend megvalósítása](Documentation/backend.md)
-
-
-
-
->>>>>>> Stashed changes
