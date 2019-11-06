@@ -50,6 +50,7 @@ public class ContactController {
         if(oPerson.isPresent()) {
             Person person = oPerson.get();
             Contact newContact = new Contact(person, contact.getContactType(), contact.getContact());
+            contactRepository.save(newContact);
             person.getContacts().add(newContact);
             peopleRepository.save(person);
         }
