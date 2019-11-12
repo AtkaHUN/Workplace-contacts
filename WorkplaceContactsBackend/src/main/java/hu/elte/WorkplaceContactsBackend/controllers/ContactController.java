@@ -2,6 +2,7 @@ package hu.elte.WorkplaceContactsBackend.controllers;
 
 import hu.elte.WorkplaceContactsBackend.DTO.ContactDTO;
 import hu.elte.WorkplaceContactsBackend.entities.Contact;
+import hu.elte.WorkplaceContactsBackend.entities.Contact.ContactType;
 import hu.elte.WorkplaceContactsBackend.entities.Person;
 import hu.elte.WorkplaceContactsBackend.error.ErrorHandler;
 import hu.elte.WorkplaceContactsBackend.repositories.ContactRepository;
@@ -57,11 +58,11 @@ public class ContactController {
         return ResponseEntity.ok(contact);
     }
 
-    @DeleteMapping("/{contact}")
-    public ResponseEntity delete(@PathVariable String contact) {
-        Optional<Contact> oContact = contactRepository.findByContact(contact);
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable int id) {
+        Optional<Contact> oContact = contactRepository.findById(id);
         if (oContact.isPresent()) {
-            contactRepository.deleteByContact(contact);
+            contactRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

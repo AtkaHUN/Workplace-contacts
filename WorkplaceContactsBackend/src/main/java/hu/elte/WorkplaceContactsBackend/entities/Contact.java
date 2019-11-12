@@ -1,10 +1,10 @@
 package hu.elte.WorkplaceContactsBackend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import hu.elte.WorkplaceContactsBackend.keys.ContactKey;
-import hu.elte.WorkplaceContactsBackend.keys.ContactKey.ContactType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -19,19 +19,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@IdClass(ContactKey.class)
 public class Contact {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    
     @ManyToOne
     @JoinColumn
     @JsonIgnore
     private Person person;
     
-    @Id
     @Column(name = "contact_type")
     private ContactType contactType;
     
-    @Id
     @Column
     private String contact;
+
+    public Contact(Person person, ContactType contactType, String contact) {
+        this.person = person;
+        this.contactType = contactType;
+        this.contact = contact;
+    }
+    
+    
+    public enum ContactType {
+        TELEPHONE, MOBILE_PHONE, EMAIL
+    }
 }

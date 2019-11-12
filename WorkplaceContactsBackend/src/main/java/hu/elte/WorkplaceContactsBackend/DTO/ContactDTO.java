@@ -1,6 +1,6 @@
 package hu.elte.WorkplaceContactsBackend.DTO;
 
-import hu.elte.WorkplaceContactsBackend.keys.ContactKey.ContactType;
+import hu.elte.WorkplaceContactsBackend.entities.Contact.ContactType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
