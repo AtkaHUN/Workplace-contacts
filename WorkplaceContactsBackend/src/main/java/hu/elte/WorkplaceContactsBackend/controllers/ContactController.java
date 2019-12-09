@@ -5,6 +5,8 @@ import hu.elte.WorkplaceContactsBackend.entities.Contact;
 import hu.elte.WorkplaceContactsBackend.entities.Contact.ContactType;
 import hu.elte.WorkplaceContactsBackend.entities.Person;
 import hu.elte.WorkplaceContactsBackend.error.ErrorHandler;
+import org.springframework.http.HttpStatus;
+import hu.elte.WorkplaceContactsBackend.lib.ContactValidator;
 import hu.elte.WorkplaceContactsBackend.repositories.ContactRepository;
 import hu.elte.WorkplaceContactsBackend.repositories.PersonRepository;
 import java.util.ArrayList;
@@ -47,6 +49,9 @@ public class ContactController {
 
     @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> post(@RequestBody ContactDTO contact) {
+        if(!ContactValidator.validate(contact)){
+            return ResponseEntity.status(HttpStatus.ACCEPTED.BAD_REQUEST).body(null);
+        }
         Optional<Person> oPerson = peopleRepository.findById(contact.getId());
         if(oPerson.isPresent()) {
             Person person = oPerson.get();
