@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Person} from '../person';
-import {PersonService} from '../person.service';
+import { PersonService } from '../person.service';
+import { Person } from '../person';
 
 @Component({
   selector: 'app-person-list',
   templateUrl: './person-list.component.html',
-  styleUrls: ['./person-list.component.css']
+  styleUrls: ['./person-list.component.css'],
+  providers: [PersonService]
 })
 export class PersonListComponent implements OnInit {
-
-  public filteredIssues: Person[];
-  public selectedStatus: string;
-  public selectedIssue: Person;
 
   private persons: Person[] = [];
 
@@ -20,7 +17,6 @@ export class PersonListComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
 }

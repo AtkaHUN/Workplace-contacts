@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Workplace-client'`, () => {
+  it(`should have as title 'WorkplaceClient'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Workplace-client');
+    expect(app.title).toEqual('WorkplaceClient');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Workplace-client app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('WorkplaceClient app is running!');
   });
 });

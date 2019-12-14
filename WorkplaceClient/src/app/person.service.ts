@@ -1,46 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Person } from "./person";
+import {Contact} from "./contact"; 
 import {ContactService} from "./contact.service";
-import {Contact} from "./contact" 
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonService {
 
-    private issues: Contact[] = [];
-    private contactService : ContactService;  
-  private persons: Person[] = [
+    private persons: Person[] = [
     {
       id: 1,
       name: 'Horváth Béla',
       departments: 'Accounting',
-      contacts: this.contactService.getContact(1),
+      contacts: this.cService.getContact(1),
     },
     {
       id: 2,
       name: 'Sebes Tibor',
       departments: 'Accounting',
-      contacts: this.contactService.getContact(2),
+      contacts: this.cService.getContact(2),
     },
     {
       id: 3,
       name: 'Varga Géza',
       departments: 'Accounting',
-      contacts: this.contactService.getContact(3),
+      contacts: this.cService.getContact(3),
     },
     {
       id: 4,
       name: 'Katona Csenge',
       departments: 'Accounting',
-      contacts: this.contactService.getContact(4),
+      contacts: this.cService.getContact(4),
     },
   ];
   
-  constructor(private contServ : ContactService) {
-    this.contactService = contServ;
-   }
-  
+  constructor(private cService: ContactService) {
+    
+  }
+
   getPersons(): Person[] {
     return this.persons;
   }
@@ -48,5 +47,4 @@ export class PersonService {
   getPerson(id: number): Person {
     return this.persons.find(i => i.id == id);
   }
-
 }
